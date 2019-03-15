@@ -73,6 +73,7 @@
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
 
+//EL CODIGO CAMBIA AQUI
         // Set texture to the sampler
         var fragmentSamplerUniform = gl.getUniformLocation(gl.program, samplerUniform);
         gl.uniform1i(fragmentSamplerUniform, unitNumber);
@@ -87,10 +88,11 @@
     function initVertexBuffers(gl) {
         // Vertices (x, y) and texture coordinates (s, t)
         var verticesAndTextures = [
-            -0.5, 0.5, 0.0, 1.0, // top-left image corner
-            -0.5, -0.5, 0.0, 0.0, // bottom-left image corner
-            0.5, 0.5, 1.0, 1.0, // top-right image corner
-            0.5, -0.5, 1.0, 0.0, // bottom-right image corner
+        // -1 2
+            -0.5, 0.5, -1.0, 2.0, // top-left image corner
+            -0.5, -0.5, -1.0, -1.0, // bottom-left image corner
+            0.5, 0.5, 2.0, 2.0, // top-right image corner
+            0.5, -0.5, 2.0, -1.0, // bottom-right image corner
         ];
 
         gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
@@ -143,6 +145,15 @@
 
 <body onload="init()">
     <canvas id="myCanvas" width="640" height="480"></canvas>
+    <br>
+    <b>Wrap S</b>
+    <input type="radio" name="wraps" value="repeat" checked> Repeat
+    <input type="radio" name="wraps" value="mirrorred">Mirrored repeat
+    <input type="radio" name="wraps" value="clamp">Clamp to edge<br>
+    <b>Wrap T</b>
+    <input type="radio" name="wrapt" value="repeat" checked> Repeat
+    <input type="radio" name="wrapt" value="mirrorred">Mirrored repeat
+    <input type="radio" name="wrapt" value="clamp">Clamp to edge<br>
 </body>
 
 </html>
