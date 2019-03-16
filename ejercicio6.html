@@ -26,16 +26,10 @@
 
 <script>
 
-    var wraps;
-    var wrapt;
 
     function init() {
         // Get canvas object from the DOM
         var canvas = document.getElementById("myCanvas");
-
-        wraps = document.querySelector('input[name="wraps"]:checked').value;
-        wrapt = document.querySelector('input[name="wrapt"]:checked').value;
-
 
         // Init WebGL context
         var gl = canvas.getContext("webgl");
